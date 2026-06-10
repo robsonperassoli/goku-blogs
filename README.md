@@ -1,4 +1,4 @@
-# bitsofcode.io
+# goku-blogs
 
 A handmade, lightweight blog engine built from scratch with Elixir. This is a custom-crafted solution that serves markdown articles with YAML front matter support, designed for simplicity and speed.
 
@@ -42,7 +42,7 @@ This engine embraces simplicity over complexity:
 
 ### Prerequisites
 
-- Elixir 1.18 or later
+- Elixir 1.20 or later
 - Mix build tool
 
 ### Installation
