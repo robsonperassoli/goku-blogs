@@ -13,12 +13,12 @@
 #
 ARG ELIXIR_VERSION=1.20.1
 ARG OTP_VERSION=29.0.2
-ARG DEBIAN_VERSION=bullseye-20250610-slim
+ARG DEBIAN_VERSION=bullseye-20260518-slim
 
 ARG BUILDER_IMAGE="hexpm/elixir:${ELIXIR_VERSION}-erlang-${OTP_VERSION}-debian-${DEBIAN_VERSION}"
 ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 
-FROM ${BUILDER_IMAGE} as builder
+FROM ${BUILDER_IMAGE} AS builder
 
 # install build dependencies
 RUN apt-get update -y && apt-get install -y build-essential git \
