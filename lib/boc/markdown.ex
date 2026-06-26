@@ -22,11 +22,18 @@ defmodule Boc.Markdown do
   end
 
   defp to_html(markdown) do
-    case Earmark.as_html(markdown) do
-      {:ok, html, _} ->
+    options = [
+      syntax_highlight: [
+        engine: :lumis,
+        opts: [formatter: {:html_inline, theme: "catppuccin_mocha"}]
+      ]
+    ]
+
+    case MDEx.to_html(markdown, options) do
+      {:ok, html} ->
         {:ok, html}
 
-      {:error, _, _error} ->
+      {:error, _error} ->
         # should i log this or just return? I think log is the proper thing to do
         {:error, :invalid_markdown}
     end

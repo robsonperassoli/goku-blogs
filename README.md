@@ -20,7 +20,7 @@ This blog engine was built from the ground up using carefully chosen libraries:
 ### Core Libraries
 - **[Bandit](https://hex.pm/packages/bandit)** - Modern HTTP/1.1 and HTTP/2 server for fast, concurrent request handling
 - **[Plug](https://hex.pm/packages/plug)** - Composable web application framework providing the routing and middleware foundation
-- **[Earmark](https://hex.pm/packages/earmark)** - Pure Elixir markdown parser for converting content to HTML
+- **[Mdex](https://hex.pm/packages/mdex)** - Fast and Extensible Markdown for Elixir.
 - **[YamlElixir](https://hex.pm/packages/yaml_elixir)** - YAML parser for processing article front matter metadata
 
 ### Design Philosophy
