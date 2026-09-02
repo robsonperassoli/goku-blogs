@@ -1,1 +1,3 @@
-# My Photography
+---
+title: "My Photography"
+---

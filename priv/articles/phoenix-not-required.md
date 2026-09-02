@@ -1,5 +1,6 @@
-# Using elixir? Phoenix not required!
-
+---
+title: "Using elixir? Phoenix not required!"
+---
 *DISCLAIMER: I truly love phoenix and appreciate what the team has built over the years, many of the libraries used in this project only exist because of phoenix, so... Thank you!*
 
 ## The Inspiration

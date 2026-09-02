@@ -44,7 +44,7 @@ defmodule Boc.ArticlesMonitor do
     {:noreply, state}
   end
 
-  def handle_info(:throttle_timer_complete, state) do
+  def handle_info(:throttle_timer_complete, %State{} = state) do
     Boc.Articles.DB.reset()
 
     state = %State{state | throttle_timer: nil}

@@ -5,8 +5,6 @@ date: 2025-08-27
 description: "A complete test file covering all common markdown syntax elements"
 tags: ["markdown", "test", "documentation"]
 ---
-# Markdown Syntax Test Document
-
 This document tests all common markdown syntax elements for comprehensive formatting validation.
 
 ## Headers

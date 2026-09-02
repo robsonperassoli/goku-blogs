@@ -3,40 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Robson Perassoli">
 
-    <title><%= article.meta["title"] %></title>
+    <title><%= if home?(article), do: "Robson Perassoli", else: article_title(article) %></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
     <link href="/public/styles.css" rel="stylesheet">
 </head>
 <body>
-  <header class="masthead">
-    <nav class="header-nav">
-      <a href="/home">/home</a>
-      <a href="https://github.com/robsonperassoli" target="_blank">/Github</a>
-      <a href="https://www.linkedin.com/in/robsonperassoli/" target="_blank">/LinkedIn</a>
+  <a class="skip-link" href="#content">Skip to content</a>
 
+  <header class="masthead <%= if home?(article), do: "masthead--home", else: "masthead--article" %>">
+    <nav class="header-nav" aria-label="Primary">
+      <a href="/"<%= if home?(article), do: ~s( aria-current="page") %>>Home</a>
+      <a href="https://github.com/robsonperassoli" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/robsonperassoli/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </nav>
 
-    <img src="https://avatars.githubusercontent.com/u/625089" alt="Robson Perassoli" class="author-photo" />
-
-    <div class="nameplate">
-      <h1><a href="/">Robson Perassoli</a></h1>
-      <h2>Software Engineer</h2>
-    </div>
-
-
+    <%= if home?(article) do %>
+      <div class="nameplate">
+        <img src="https://avatars.githubusercontent.com/u/625089" alt="Robson Perassoli" class="author-photo" width="64" height="64" />
+        <div class="nameplate-copy">
+          <h1><a href="/">Robson Perassoli</a></h1>
+          <p class="kicker">Software Engineer</p>
+        </div>
+      </div>
+    <% else %>
+      <p class="wordmark"><a href="/">Robson Perassoli</a></p>
+    <% end %>
   </header>
 
-  <main>
-    <article class="markdown-body">
+  <main id="content">
+    <%= unless home?(article) do %>
+      <header class="article-header">
+        <%= if tags(article) != [] do %>
+          <p class="article-kicker"><%= Enum.join(tags(article), " · ") %></p>
+        <% end %>
+        <h1><%= article_title(article) %></h1>
+        <%= if publication_date(article) do %>
+          <p class="article-byline"><time><%= publication_date(article) %></time></p>
+        <% end %>
+      </header>
+    <% end %>
+
+    <article class="markdown-body<%= if home?(article), do: " markdown-body--home" %>">
         <%= article.html %>
     </article>
   </main>
