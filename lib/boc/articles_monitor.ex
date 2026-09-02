@@ -6,7 +6,7 @@ defmodule Boc.ArticlesMonitor do
   @throttle_timeout_ms 100
 
   defmodule State do
-    defstruct [:throttle_timer, :file_events, :watcher_pid]
+    defstruct [:throttle_timer, :watcher_pid]
   end
 
   def start_link(_opts \\ []) do
@@ -31,7 +31,7 @@ defmodule Boc.ArticlesMonitor do
 
     state =
       if matching_extension? && matching_event? do
-        maybe_recomplete(state)
+        schedule_recompile(state)
       else
         state
       end
@@ -44,17 +44,17 @@ defmodule Boc.ArticlesMonitor do
     {:noreply, state}
   end
 
-  def handle_info(:throttle_timer_complete, %State{} = state) do
-    Boc.Articles.DB.reset()
+  def handle_info(:recompile, %State{} = state) do
+    Boc.Articles.DB.recompile()
 
     state = %State{state | throttle_timer: nil}
     {:noreply, state}
   end
 
-  defp maybe_recomplete(%State{throttle_timer: nil} = state) do
-    throttle_timer = Process.send_after(self(), :throttle_timer_complete, @throttle_timeout_ms)
+  defp schedule_recompile(%State{throttle_timer: nil} = state) do
+    throttle_timer = Process.send_after(self(), :recompile, @throttle_timeout_ms)
     %State{state | throttle_timer: throttle_timer}
   end
 
-  defp maybe_recomplete(%State{} = state), do: state
+  defp schedule_recompile(%State{} = state), do: state
 end

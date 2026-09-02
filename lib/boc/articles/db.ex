@@ -17,7 +17,7 @@ defmodule Boc.Articles.DB do
     Agent.get(__MODULE__, & &1)
   end
 
-  def reset() do
+  def recompile() do
     Agent.update(__MODULE__, fn _ -> prepare_articles() end)
   end
 
