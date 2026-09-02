@@ -1,6 +1,10 @@
 # About me
-I'm Robson Perassoli, a software engineer who gets genuinely excited about solving problems with code. I've spent years building and refining systems, and I still love it. When I'm not coding, I spend my time brewing beer, getting my hands dirty in the garden, and fumbling my way through learning photography. I'm driven by curiosity and love the process of learning new things.
+Hey! I’m Robson, a software engineer. I like software that feels simple and intuitive, and I’ve spent my whole career figuring out how to make it that way.
+
+Photography is how I stay creative. Gardening is how I stay grounded. Brewing beer is how I disconnect.
+
+
 
 # Articles
-## [How I Use LLM's to Extract Structured Data](/structured-data-extraction-llms)
-## [Phoenix is Great... but you can build elixir web apps without it.](/you-dont-need-phoenix)
+## [LLM-Assisted Data Extraction](/structured-data-extraction-llms)
+## [Using elixir? Phoenix not required!](/phoenix-not-required)
